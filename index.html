@@ -33,9 +33,46 @@ body {
   font-family: var(--sans);
   font-size: 15px;
   line-height: 1.7;
+  position: relative;
+}
+
+#global-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 15% 8%, rgba(230,52,42,0.10) 0%, transparent 32%),
+    radial-gradient(circle at 88% 18%, rgba(27,63,191,0.10) 0%, transparent 30%),
+    radial-gradient(circle at 50% 80%, rgba(242,183,54,0.08) 0%, transparent 35%),
+    repeating-radial-gradient(circle, rgba(0,0,0,0.05) 0px, rgba(0,0,0,0.05) 1px, transparent 1.6px, transparent 14px),
+    var(--paper);
+}
+#global-bg-gif {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background-image: url('https://cdn.dribbble.com/userupload/25171196/file/original-f6be4ed2cce48d5f63d675ae0459b33b.gif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.16;
+  filter: saturate(1.4);
+}
+#global-bg-gif::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, var(--paper) 0%, rgba(237,230,211,0.55) 50%, var(--paper) 100%);
+}
+#global-bg::before {
+  content: '';
+  position: absolute; inset: 0;
   background-image:
-    radial-gradient(circle, rgba(0,0,0,0.05) 1px, transparent 1px);
-  background-size: 14px 14px;
+    linear-gradient(105deg, transparent 47%, rgba(230,52,42,0.05) 48%, rgba(230,52,42,0.05) 49%, transparent 50%),
+    linear-gradient(75deg, transparent 60%, rgba(27,63,191,0.05) 61%, rgba(27,63,191,0.05) 62%, transparent 63%),
+    linear-gradient(115deg, transparent 20%, rgba(242,183,54,0.05) 21%, rgba(242,183,54,0.05) 21.6%, transparent 22%);
+  background-size: 140% 140%;
 }
 
 /* ── TOP BAR ── */
@@ -70,7 +107,11 @@ nav a:hover { color: var(--red); }
 .hero {
   background: var(--blue);
   background-image:
+    url('https://cdn.dribbble.com/userupload/25171196/file/original-f6be4ed2cce48d5f63d675ae0459b33b.gif'),
     repeating-linear-gradient(135deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 2px, transparent 2px, transparent 14px);
+  background-size: cover, auto;
+  background-position: center, center;
+  background-blend-mode: overlay, normal;
   border-bottom: 6px solid var(--ink);
   display: grid;
   grid-template-columns: 1.2fr 1fr;
@@ -299,7 +340,7 @@ nav a:hover { color: var(--red); }
 .skill-card:hover .skill-name { color: var(--white); }
 
 /* ── EXPERIENCE ── */
-#experience { background: var(--paper); }
+#experience { background: rgba(237,230,211,0.85); }
 .exp-row {
   display: grid;
   grid-template-columns: 200px 1fr;
@@ -348,7 +389,7 @@ nav a:hover { color: var(--red); }
 }
 
 /* ── PROJECTS ── */
-#projects { background: var(--paper); }
+#projects { background: rgba(237,230,211,0.85); }
 .project-row {
   display: grid;
   grid-template-columns: 1fr 320px;
@@ -402,7 +443,7 @@ nav a:hover { color: var(--red); }
 }
 
 /* ── EDUCATION ── */
-#education { background: var(--paper); }
+#education { background: rgba(237,230,211,0.85); }
 .edu-table { width: 100%; border-collapse: collapse; background: var(--white); border: 3px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); }
 .edu-table tr { border-bottom: 2px solid var(--paper); }
 .edu-table tr:last-child { border-bottom: none; }
@@ -426,7 +467,7 @@ nav a:hover { color: var(--red); }
 }
 
 /* ── CERTS ── */
-#certifications { background: var(--paper); }
+#certifications { background: rgba(237,230,211,0.85); }
 .certs-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -529,14 +570,16 @@ footer {
 </style>
 </head>
 <body>
+<div id="global-bg-gif"></div>
+<div id="global-bg"></div>
 
 <header>
-  <span class="logo">LSK</span>
+  <span class="logo">LSK · PORTFOLIO</span>
   <nav>
-    <a href="#skills">SKILLS</a>
-    <a href="#experience">EXPERIENCE</a>
-    <a href="#projects">PROJECTS</a>
-    <a href="#contact">CONTACT</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
   </nav>
 </header>
 
@@ -580,8 +623,8 @@ footer {
   <div class="spider-particles" id="particles"></div>
 
   <div class="section-header">
-    <span class="section-burst">POW! · 01</span>
-    <h2 class="section-title">Powers &amp; Abilities</h2>
+    <span class="section-burst">01</span>
+    <h2 class="section-title">Skills</h2>
   </div>
 
   <div class="skills-flex">
@@ -665,8 +708,8 @@ footer {
 <!-- EXPERIENCE -->
 <section class="section" id="experience">
   <div class="section-header">
-    <span class="section-burst">BAM! · 02</span>
-    <h2 class="section-title">Origin Story</h2>
+    <span class="section-burst">02</span>
+    <h2 class="section-title">Experience</h2>
   </div>
 
   <div class="exp-row">
@@ -689,8 +732,8 @@ footer {
 <!-- PROJECTS -->
 <section class="section" id="projects">
   <div class="section-header">
-    <span class="section-burst">ZAP! · 03</span>
-    <h2 class="section-title">Mission Log</h2>
+    <span class="section-burst">03</span>
+    <h2 class="section-title">Projects</h2>
   </div>
 
   <div class="project-row">
@@ -725,8 +768,8 @@ footer {
 <!-- EDUCATION -->
 <section class="section" id="education">
   <div class="section-header">
-    <span class="section-burst">SMASH! · 04</span>
-    <h2 class="section-title">Training Academy</h2>
+    <span class="section-burst">04</span>
+    <h2 class="section-title">Education</h2>
   </div>
   <table class="edu-table">
     <tr>
@@ -759,8 +802,8 @@ footer {
 <!-- CERTIFICATIONS -->
 <section class="section" id="certifications">
   <div class="section-header">
-    <span class="section-burst">KAPOW! · 05</span>
-    <h2 class="section-title">Badges of Honor</h2>
+    <span class="section-burst">05</span>
+    <h2 class="section-title">Certifications</h2>
   </div>
   <div class="certs-grid">
     <div class="cert-item">
@@ -784,7 +827,7 @@ footer {
 
 <!-- CONTACT -->
 <section id="contact">
-  <h2 class="contact-heading">LET'S WORK TOGETHER</h2>
+  <h2 class="contact-heading">Let's Work Together</h2>
   <p class="contact-sub">Open to internships, freelance projects, and full-time roles in web development or AI. Based in Rajahmundry, AP — available remotely.</p>
   <div class="contact-actions">
     <a href="mailto:pleelasrikrishna@gmail.com" class="btn-primary">Send an Email</a>
